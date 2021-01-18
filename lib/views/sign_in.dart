@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/custom/custom_widgets.dart';
+import 'package:todo_app/database/auth.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggle;
@@ -13,8 +14,10 @@ class _SignInState extends State<SignIn> {
   TextEditingController passwordController = new TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  signIn() {
-    if (formKey.currentState.validate()) {}
+  signMeIn() async {
+    if (formKey.currentState.validate()) {
+      Auth.signIn(emailController.text, passwordController.text).then(print);
+    }
   }
 
   @override
@@ -58,7 +61,7 @@ class _SignInState extends State<SignIn> {
                   border: Border.all(color: Color(0xFF01579b), width: 2)),
               child: FlatButton(
                   onPressed: () {
-                    signIn();
+                    signMeIn();
                   },
                   child: Text(
                     "Sign In",
