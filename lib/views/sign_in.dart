@@ -9,6 +9,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   signIn() {
@@ -38,13 +40,13 @@ class _SignInState extends State<SignIn> {
                       return isEmail(value)
                           ? null
                           : "enter a valid email please";
-                    }),
+                    }, emailController),
                     SizedBox(height: 50),
                     textField("Password", true, (String value) {
                       return value.length > 6
                           ? null
                           : "too short, try again please";
-                    })
+                    }, passwordController)
                   ],
                 ),
               ),

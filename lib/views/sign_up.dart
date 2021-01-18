@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/custom/custom_widgets.dart';
-import 'package:todo_app/views/sign_in.dart';
 
 class SignUp extends StatefulWidget {
   final Function toggle;
@@ -10,9 +9,11 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  @override
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -35,13 +36,13 @@ class _SignUpState extends State<SignUp> {
                       return isEmail(value)
                           ? null
                           : "enter a valid email please";
-                    }),
+                    }, emailController),
                     SizedBox(height: 50),
                     textField("Password", true, (String value) {
                       return value.length > 6
                           ? null
                           : "too short, try again please";
-                    })
+                    }, passwordController)
                   ],
                 ),
               ),

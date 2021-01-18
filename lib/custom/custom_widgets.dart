@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-Widget textField(String hint, bool obscure, Function validator) =>
+Widget textField(String hint, bool obscure, Function validator,
+        TextEditingController controller) =>
     TextFormField(
+      controller: controller,
       validator: validator,
       obscureText: obscure,
       style: TextStyle(
