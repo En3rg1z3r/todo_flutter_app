@@ -13,6 +13,10 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passwordController = new TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  signUp() {
+    if (formKey.currentState.validate()) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
