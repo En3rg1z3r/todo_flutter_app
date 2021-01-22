@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/custom/custom_widgets.dart';
 import 'package:todo_app/database/auth.dart';
+import 'package:todo_app/views/todoes.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggle;
@@ -16,7 +17,10 @@ class _SignInState extends State<SignIn> {
 
   signMeIn() async {
     if (formKey.currentState.validate()) {
-      Auth.signIn(emailController.text, passwordController.text).then(print);
+      Auth.signIn(emailController.text, passwordController.text).then((user) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => TodoScreen()));
+      });
     }
   }
 
